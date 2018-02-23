@@ -1,0 +1,193 @@
+/**************************************************************
+* 															  *
+*                                                             *
+* 天堂M 按鍵精靈助手 2/12/18       	  	                      *                          
+*                                                             *
+*												by TimothySyu *
+***************************************************************/
+
+
+Dim  hp_detect //血量偵測主程式
+Dim hp_auto,R_percent,R_choose
+Sub hp_Run()
+
+hp_auto = ReadUIConfig("多选框2")
+R_percent = ReadUIConfig("输入框2")
+R_choose = ReadUIConfig("下拉框1")
+TracePrint "detect hp"
+	If hp_auto = true Then 
+		Do
+			Dim intSafeX,intSafeY	
+			Call hp() //call副程式
+			//check安區
+			FindColor 1140,311,1214,333,"D27C1B-101010|945713-101010|975913-101010|DD821D-101010|C27219-101010|73430F-101010|F28E1F-101010|7D4A10-101010|C27219-101010",0,0.9,intSafeX,intSafeY
+			If intSafeX > -1 And intSafeY > -1 Then 
+			
+			Else 
+				If percent < R_percent * 1 Then //check血量%數 
+					If R_choose = 0 Then //選項0 
+    					Tap 623, 632
+						ShowMessage "沒血回卷", 2000,578
+						TracePrint "HP less then ..."
+   					
+    				Else //選項 1
+    					Tap 542,633
+						ShowMessage "沒血瞬移", 2000,578
+						TracePrint "HP less then ..."
+						delay 5000
+    				End If
+    				
+    			End If
+			End If
+		Loop
+	End If
+	
+End Sub
+hp_detect = Thread.Start(hp_Run)
+
+
+Dim percent
+
+Sub hp() //血量偵測副程式
+	
+Dim checkup,hp_X1,hp_X2,hp_Y1,full
+
+hp_X1 = 81
+hp_X2 = 273
+hp_Y1 = 32
+full = 100
+
+For full = 100 To 1 Step -1
+	
+	checkup = CmpColor((full / 100) * (hp_X2 - hp_X1) + hp_X1, hp_Y1, "0008F9-101010", 0.9)
+	If checkup > -1 Then
+    	percent = CInt(full)
+    	
+    	
+    	Exit for
+	Else
+    	
+	End If
+	
+Next
+TracePrint "percent"
+//ShowMessage "血量HP：" & percent & "%", 1000, 100, 400
+
+
+End Sub
+
+
+
+
+
+
+Dim mailbox_auto  //多綫程收信主程式
+Sub mailbox_Run()  
+	Do
+		Delay 30*60000
+    	TracePrint "mailbox"
+    	Call mailbox()
+    	
+	Loop
+End Sub
+mailbox_auto = Thread.Start(mailbox_Run)
+
+
+Sub mailbox()//自動收發信箱副程式
+
+	Dim intxx,intyy
+	ShowMessage "自動收信" ,3000,578
+	TracePrint intxx
+	
+	Tap 1230, 42
+	Delay 1000
+	Tap 1004, 320
+	Delay 1000
+	Tap 1057,653
+	Delay 1000
+	Tap 1242, 39
+	Delay 1000
+	Tap 1242, 39
+	TracePrint intyy
+	
+	Delay 1000
+End Sub
+
+
+
+
+
+Dim Kill_auto  //無怪瞬移主程式
+
+Sub kill_Run()
+  	Dim intSafeX,intSafeY
+	Do
+		
+		//安全區域圖
+		FindColor 1140,311,1214,333,"D27C1B-101010|945713-101010|975913-101010|DD821D-101010|C27219-101010|73430F-101010|F28E1F-101010|7D4A10-101010|C27219-101010",0,0.9,intSafeX,intSafeY
+		If intSafeX > -1 And intSafeY > -1 Then
+		Else 
+			Call kill()
+		End If
+    		
+	Loop
+End Sub
+Kill_auto = Thread.Start(kill_Run)
+
+
+Dim Kill_select
+
+Sub kill() //無怪瞬移。副程式
+		Dim intX2,intY2,intSafeX2,intSafeY2
+		Delay 5000
+		TracePrint "wait 5 seconds to detect the Kill"
+    	Kill_select = ReadUIConfig("多选框1")
+    	TracePrint "detecting selection"
+    	If Kill_select = true Then 
+    		TracePrint "selected True"
+			//Kill_pic
+			FindColor 1173,351,1213,376,"669DF1-101010|619DFD-101010|2A4CFD-101010|4E81FE-101010|7FBAFB-101010|1634F4-101010|3C67FC-101010|91CBFF-101010|65A1E0-101010",0,0.9,intX2,intY2
+			If intX2 > -1 And intY2 > -1 Then 
+			
+			Else 
+				TracePrint"Detected the kill disappear 1, wait for next 7 seconds"
+				Delay 7000
+				FindColor 1140,311,1214,333,"D27C1B-101010|945713-101010|975913-101010|DD821D-101010|C27219-101010|73430F-101010|F28E1F-101010|7D4A10-101010|C27219-101010",0,0.9,intSafeX2,intSafeY2
+				If intSafeX2 > -1 And intSafeY2 > -1 Then 
+				Else
+					FindColor 1173,351,1213,376,"669DF1-101010|619DFD-101010|2A4CFD-101010|4E81FE-101010|7FBAFB-101010|1634F4-101010|3C67FC-101010|91CBFF-101010|65A1E0-101010",0,0.9,intX2,intY2
+					If intX2 > -1 And intY2 > -1 Then 
+					
+					Else 
+						TracePrint "Detected the kill disappear 2"
+						TracePrint "無怪瞬移"
+						Tap 537, 640
+						ShowMessage "無怪瞬移", 2000, 578
+					End If
+				End If
+			End If
+    			
+    	End If
+End Sub
+
+
+
+
+Do	//被打瞬移主程式
+
+
+Dim intW,intZ,intX,intY
+
+FindColor 281, 9, 293, 36, "07086E|080B6F", 0, 0.95, intX, intY //偵測骷髏
+FindColor 1193,542,1207,553,"94A4FF|94A4FF",0,0.95,intW,intZ
+	
+	TracePrint "test skeleton"
+
+If intW > -1 And intZ > -1 And intW > -1 And intZ > -1  Then //被打瞬移
+	Tap 537, 640
+	ShowMessage "被打瞬移" ,2000,578
+	Delay 2800
+End If
+
+Delay 1000
+Loop
