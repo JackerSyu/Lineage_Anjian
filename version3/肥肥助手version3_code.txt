@@ -1,0 +1,401 @@
+/**************************************************************
+* 															  *
+*                                                             *
+* 天堂M 按鍵精靈助手 2/12/18       	  	                      *                          
+*                                                             *
+*												by TimothySyu *
+***************************************************************/
+
+
+
+
+ /**********************2018/2/27更新-自動解副本*************************************/
+ 
+ //副本3
+Sub task3_Run()
+	Dim intX2,intY2
+	TracePrint"開始task3"
+	Tap 1242, 37
+	Delay 2000
+	Tap 931, 184
+	Delay 2000
+	Tap 544, 228 //選擇副本3
+	Delay 2000
+	tap 756,557 //確認副本3
+	Delay 2000
+	Tap 742,503 //進入副本3
+	Delay 2000
+	Tap	742,503//點擊
+	Delay 6000
+	TracePrint "進入副本3"
+	Tap 961,514 //auto
+	Delay 1000
+	Tap 879,628 //瞬移
+	Delay 5000
+	TracePrint "開始動作"
+	Do
+		
+		Dim inttaskx,inttasky
+		FindColor 1096,196,1144,250,"32EAFF-101010|2CDAFC-101010|26C5E3-101010|189DC8-101010",0,0.9,inttaskx,inttasky
+		If inttaskx > -1 And inttasky > -1 Then //判斷完成任務
+		 	Delay 3000
+			Tap 879, 628
+			TracePrint "結束副本3"
+			Exit Sub
+		Else 
+			//Kill_pic
+			FindColor 1173,351,1213,376,"669DF1-101010|619DFD-101010|2A4CFD-101010|4E81FE-101010|7FBAFB-101010|1634F4-101010|3C67FC-101010|91CBFF-101010|65A1E0-101010",0,0.9,intX2,intY2
+			If intX2 > -1 And intY2 > -1 Then 
+				
+			Else 
+				TracePrint"Detected the kill disappear 1, wait for next 7 seconds"
+				Delay 7000
+				FindColor 1173,351,1213,376,"669DF1-101010|619DFD-101010|2A4CFD-101010|4E81FE-101010|7FBAFB-101010|1634F4-101010|3C67FC-101010|91CBFF-101010|65A1E0-101010",0,0.9,intX2,intY2
+				If intX2 > -1 And intY2 > -1 Then 		
+				Else 
+					TracePrint "Detected the kill disappear 2"
+					TracePrint "無怪瞬移"
+					Tap 873,633
+					ShowMessage "無怪瞬移", 2000, 578
+				End If
+			End If
+		End If	
+			
+			
+		
+	Loop
+End Sub
+
+
+
+	Dim tab_auto //自動tab(副本用)
+	Sub tab_Run()
+		Do
+			Tap 879,628 //tab
+			Delay 1000
+			TracePrint "tab"
+		Loop
+	End sub
+	
+
+
+
+ //副本4
+sub task4_Run(a)// a = 決定副本4 or 5
+	
+	Dim intX2,intY2
+	
+	Tap 1242, 37
+	Delay 2000
+	Tap 931, 184
+	Delay 2000
+	Tap 727+200*a ,270 //選擇副本4 x+200 = 副本5
+	Delay 2000
+	tap 756,557 //確認副本4/副本5
+	Delay 2000
+	Tap 742,503 //進入副本4/副本5
+	Delay 2000
+	Tap	742,503//點擊
+	Delay 8000
+	Tap 961,514 //auto
+	Delay 2000
+	Tap 539,635 //瞬移
+	Delay 1500
+	TracePrint "進入副本4or5"
+	tab_auto = Thread.Start(tab_Run)
+	
+	Do
+		
+		
+		Dim inttaskx,inttasky
+		FindColor 1096,196,1144,250,"32EAFF-101010|2CDAFC-101010|26C5E3-101010|189DC8-101010",0,0.9,inttaskx,inttasky
+		If inttaskx > -1 And inttasky > -1 Then //判斷完成任務 
+			Delay 500
+			Thread.Stop(tab_auto) // 結束自動tab
+			Delay 3000
+			Tap 879, 628
+			TracePrint "結束副本"
+			
+			Exit Sub 
+		Else 
+			//Kill_pic
+			FindColor 1173,351,1213,376,"669DF1-101010|619DFD-101010|2A4CFD-101010|4E81FE-101010|7FBAFB-101010|1634F4-101010|3C67FC-101010|91CBFF-101010|65A1E0-101010",0,0.9,intX2,intY2
+			If intX2 > -1 And intY2 > -1 Then 
+				
+			Else 
+				TracePrint"Detected the kill disappear 1, wait for next 7 seconds"
+				Delay 7000
+					FindColor 1173,351,1213,376,"669DF1-101010|619DFD-101010|2A4CFD-101010|4E81FE-101010|7FBAFB-101010|1634F4-101010|3C67FC-101010|91CBFF-101010|65A1E0-101010",0,0.9,intX2,intY2
+					If intX2 > -1 And intY2 > -1 Then 		
+					Else 
+						TracePrint "Detected the kill disappear 2"
+						TracePrint "無怪瞬移"
+						Tap 539,635
+						ShowMessage "無怪瞬移", 2000, 578
+					End If
+			End If
+		End If	
+			
+			
+		
+	Loop
+	
+	
+End Sub
+
+
+
+Dim mission_auto,mission_UI,task3_UI,task4_UI,task5_UI
+
+mission_UI = ReadUIConfig("多选-自動解副本")
+task3_UI = ReadUIConfig("多选-副本3")
+task4_UI = ReadUIConfig("多选-副本4")
+task5_UI = ReadUIConfig("多选-副本5")
+Sub mission_Run()
+
+	TracePrint "進入mission_run"
+	If task3_UI = true Then 
+		TracePrint"True"
+		//task3_auto = Thread.Start(task3_Run)
+		Call task3_Run()
+		TracePrint "選擇task3"
+	End If
+	TracePrint"1"
+	Delay 1000*10
+
+	If task4_UI = True Then 
+	 	TracePrint "選擇task4"
+		call task4_Run(0)
+		
+	End If	
+	
+	Delay 1000 * 10
+	
+	If task5_UI = True Then 
+	 	TracePrint "選擇task5"
+		call task4_Run(1)
+		
+	End If
+	TracePrint"結束mission_run"
+End Sub
+
+If mission_UI = True Then 
+
+	Call mission_Run()
+	
+	TracePrint "Mission_end"
+	
+End If
+
+
+
+ 
+
+
+
+
+
+
+
+/******************************************************************/
+Dim  hp_detect //血量偵測主程式
+Dim hp_auto,R_percent,R_choose
+Sub hp_Run()//血量偵測主程式
+
+hp_auto = ReadUIConfig("多选框2")
+R_percent = ReadUIConfig("输入框2")
+R_choose = ReadUIConfig("下拉框1")
+TracePrint "detect hp"
+	If hp_auto = true Then 
+		Do
+			Dim intSafeX,intSafeY	
+
+			Call hp() //call副程式
+			//check安區
+			FindColor 1140,311,1214,333,"D27C1B-101010|945713-101010|975913-101010|DD821D-101010|C27219-101010|73430F-101010|F28E1F-101010|7D4A10-101010|C27219-101010",0,0.9,intSafeX,intSafeY
+			If intSafeX > -1 And intSafeY > -1 Then 
+			
+			Else 
+				If percent < R_percent * 1 Then //check血量%數 
+					If R_choose = 0 Then //選項0 
+    					Tap 623, 632
+						ShowMessage "沒血回卷", 2000,578
+						TracePrint "HP less then ..."
+   					
+    				Else //選項 1
+    					Tap 542,633
+						ShowMessage "沒血瞬移", 2000,578
+						TracePrint "HP less then ..."
+						//delay 5000
+    				End If
+    				
+    			End If
+			End If
+		Loop
+	End If
+	
+End Sub
+hp_detect = Thread.Start(hp_Run)
+
+
+Dim percent
+
+Sub hp() //血量偵測副程式
+	
+Dim checkup,hp_X1,hp_X2,hp_Y1,full
+
+hp_X1 = 81
+hp_X2 = 273
+hp_Y1 = 32
+full = 100
+
+For full = 100 To 1 Step -5
+
+	Delay 300
+	checkup = CmpColor((full / 100) * (hp_X2 - hp_X1) + hp_X1, hp_Y1, "0008F9-101010", 0.9)
+	TracePrint "HP偵測for"
+	TracePrint percent
+	
+	If checkup > -1 Then
+    	percent = CInt(full)
+    	
+    	
+    	
+    	Exit for
+	Else
+    	
+	End If
+	
+Next
+TracePrint "percent"
+ShowMessage "血量HP：" & percent & "%", 1000, 100, 400
+
+
+End Sub
+
+
+
+
+
+
+Dim mailbox_auto  //多綫程收信主程式
+Dim mailbox_ui
+
+Sub mailbox_Run()//多綫程收信主程式
+
+mailbox_ui = ReadUIConfig("自動收信")
+If mailbox_ui = True Then 
+	Do
+		Delay 30*60000
+    	TracePrint "mailbox"
+    	Call mailbox()
+    	
+	Loop
+End If 
+
+End Sub
+mailbox_auto = Thread.Start(mailbox_Run)
+
+
+Sub mailbox()//自動收發信箱副程式
+
+	Dim intxx,intyy
+	ShowMessage "自動收信" ,3000,578
+	TracePrint intxx
+	
+	Tap 1230, 42
+	Delay 1000
+	Tap 1004, 320
+	Delay 1000
+	Tap 1057,653
+	Delay 1000
+	Tap 1242, 39
+	Delay 1000
+	Tap 1242, 39
+	TracePrint intyy
+	
+	Delay 1000
+End Sub
+
+
+
+
+
+Dim Kill_auto  //無怪瞬移主程式
+
+Sub kill_Run()//無怪瞬移主程式
+  	Dim intSafeX,intSafeY
+	Do
+		
+		//安全區域圖
+		FindColor 1140,311,1214,333,"D27C1B-101010|945713-101010|975913-101010|DD821D-101010|C27219-101010|73430F-101010|F28E1F-101010|7D4A10-101010|C27219-101010",0,0.9,intSafeX,intSafeY
+		If intSafeX > -1 And intSafeY > -1 Then
+		Else 
+			Call kill()
+		End If
+    		
+	Loop
+End Sub
+Kill_auto = Thread.Start(kill_Run)
+
+
+Dim Kill_select
+
+Sub kill() //無怪瞬移。副程式
+		Dim intX2,intY2,intSafeX2,intSafeY2
+		Delay 5000
+		TracePrint "wait 5 seconds to detect the Kill"
+    	Kill_select = ReadUIConfig("多选框1")
+    	TracePrint "detecting selection"
+    	If Kill_select = true Then 
+    		TracePrint "selected True"
+			//Kill_pic
+			FindColor 1173,351,1213,376,"669DF1-101010|619DFD-101010|2A4CFD-101010|4E81FE-101010|7FBAFB-101010|1634F4-101010|3C67FC-101010|91CBFF-101010|65A1E0-101010",0,0.9,intX2,intY2
+			If intX2 > -1 And intY2 > -1 Then 
+			
+			Else 
+				TracePrint"Detected the kill disappear 1, wait for next 7 seconds"
+				Delay 7000
+				FindColor 1140,311,1214,333,"D27C1B-101010|945713-101010|975913-101010|DD821D-101010|C27219-101010|73430F-101010|F28E1F-101010|7D4A10-101010|C27219-101010",0,0.9,intSafeX2,intSafeY2
+				If intSafeX2 > -1 And intSafeY2 > -1 Then 
+				Else
+					FindColor 1173,351,1213,376,"669DF1-101010|619DFD-101010|2A4CFD-101010|4E81FE-101010|7FBAFB-101010|1634F4-101010|3C67FC-101010|91CBFF-101010|65A1E0-101010",0,0.9,intX2,intY2
+					If intX2 > -1 And intY2 > -1 Then 
+					
+					Else 
+						TracePrint "Detected the kill disappear 2"
+						TracePrint "無怪瞬移"
+						Tap 537, 640
+						ShowMessage "無怪瞬移", 2000, 578
+					End If
+				End If
+			End If
+    			
+    	End If
+End Sub
+
+
+Dim atk_ui //被打瞬移主程式
+atk_ui = ReadUIConfig("被打瞬移")
+If atk_ui = True Then 
+
+	Do	//被打瞬移主程式
+		Dim intW,intZ,intX,intY
+		
+		FindColor 281, 9, 293, 36, "07086E|080B6F", 0, 0.95, intX, intY //偵測骷髏
+		FindColor 1193,542,1207,553,"94A4FF|94A4FF",0,0.95,intW,intZ
+			
+			TracePrint "test skeleton"
+		
+		If intW > -1 And intZ > -1 And intW > -1 And intZ > -1  Then //被打瞬移
+			Tap 537, 640
+			ShowMessage "被打瞬移" ,2000,578
+			Delay 2800
+		End If
+		
+		Delay 1000
+	Loop
+
+End If//被打瞬移主程式
+
+
