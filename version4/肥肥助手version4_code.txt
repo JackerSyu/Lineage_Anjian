@@ -1,7 +1,7 @@
 /**************************************************************
 * 															  *
 *                                                             *
-* ÌìÌÃM °´æI¾«ì`ÖúÊÖ 2/12/18       	  	                      *                          
+* å¤©å ‚M æŒ‰éµç²¾éˆåŠ©æ‰‹ 2/12/18       	  	                      *                          
 *                                                             *
 *												by TimothySyu *
 ***************************************************************/
@@ -9,40 +9,40 @@
 
 
 
- /**********************2018/2/27¸üĞÂ-×Ô„Ó½â¸±±¾*************************************/
+ /**********************2018/2/27æ›´æ–°-è‡ªå‹•è§£å‰¯æœ¬*************************************/
  
- //¸±±¾3
+ //å‰¯æœ¬3
 Sub task3_Run()
 	Dim intX2,intY2
-	TracePrint"é_Ê¼task3"
+	TracePrint"é–‹å§‹task3"
 	Tap 1242, 37
 	Delay 2000
 	Tap 931, 184
 	Delay 2000
-	Tap 544, 228 //ßx“ñ¸±±¾3
+	Tap 544, 228 //é¸æ“‡å‰¯æœ¬3
 	Delay 2000
-	tap 756,557 //´_ÕJ¸±±¾3
+	tap 756,557 //ç¢ºèªå‰¯æœ¬3
 	Delay 2000
-	Tap 742,503 //ßMÈë¸±±¾3
+	Tap 742,503 //é€²å…¥å‰¯æœ¬3
 	Delay 2000
-	Tap	742,503//üc“ô
+	Tap	742,503//é»æ“Š
 	Delay 6000
-	TracePrint "ßMÈë¸±±¾3"
+	TracePrint "é€²å…¥å‰¯æœ¬3"
 	Tap 961,514 //auto
 	Delay 1000
-	Tap 879,628 //Ë²ÒÆ
+	Tap 879,628 //ç¬ç§»
 	Delay 5000
-	TracePrint "é_Ê¼„Ó×÷"
+	TracePrint "é–‹å§‹å‹•ä½œ"
 	Do
 		
 		Dim inttaskx,inttasky,intX_PS3,intY_PS3
 		FindColor 1096,196,1144,250,"32EAFF-101010|2CDAFC-101010|26C5E3-101010|189DC8-101010",0,0.9,inttaskx,inttasky
 		FindMultiColor 1143,289,1215,308,"7A848A-101010","9|1|DCF0FB-101010,3|5|C0D1DA-101010,19|1|A3B1B9-101010,37|-6|BACBD4-101010,20|-1|697378-101010,9|5|DCF0FB-101010",0,0.90,intX_PS3,intY_PS3
 	
-		If inttaskx > -1 And inttasky > -1 or intX_PS3 > -1 Then //ÅĞ”àÍê³ÉÈÎ„Õ
+		If inttaskx > -1 And inttasky > -1 or intX_PS3 > -1 Then //åˆ¤æ–·å®Œæˆä»»å‹™
 		 	Delay 3000
 			Tap 879, 628
-			TracePrint "½YÊø¸±±¾3"
+			TracePrint "çµæŸå‰¯æœ¬3"
 			Exit Sub
 		Else 
 			//Kill_pic
@@ -56,9 +56,9 @@ Sub task3_Run()
 				If intX2 > -1 And intY2 > -1 Then 		
 				Else 
 					TracePrint "Detected the kill disappear 2"
-					TracePrint "Ÿo¹ÖË²ÒÆ"
+					TracePrint "ç„¡æ€ªç¬ç§»"
 					Tap 873,633
-					ShowMessage "Ÿo¹ÖË²ÒÆ", 2000, 578
+					ShowMessage "ç„¡æ€ªç¬ç§»", 2000, 578
 				End If
 			End If
 		End If	
@@ -70,7 +70,7 @@ End Sub
 
 
 
-	Dim tab_auto //×Ô„Ótab(¸±±¾ÓÃ)
+	Dim tab_auto //è‡ªå‹•tab(å‰¯æœ¬ç”¨)
 	Sub tab_Run()
 		Do
 			Tap 879,628 //tab
@@ -82,8 +82,8 @@ End Sub
 
 
 
- //¸±±¾4
-sub task4_Run(a)// a = ›Q¶¨¸±±¾4 or 5
+ //å‰¯æœ¬4
+sub task4_Run(a)// a = æ±ºå®šå‰¯æœ¬4 or 5
 	
 	Dim intX2,intY2
 	
@@ -91,19 +91,19 @@ sub task4_Run(a)// a = ›Q¶¨¸±±¾4 or 5
 	Delay 2000
 	Tap 931, 184
 	Delay 2000
-	Tap 727+200*a ,270 //ßx“ñ¸±±¾4 x+200 = ¸±±¾5
+	Tap 727+200*a ,270 //é¸æ“‡å‰¯æœ¬4 x+200 = å‰¯æœ¬5
 	Delay 2000
-	tap 756,557 //´_ÕJ¸±±¾4/¸±±¾5
+	tap 756,557 //ç¢ºèªå‰¯æœ¬4/å‰¯æœ¬5
 	Delay 2000
-	Tap 742,503 //ßMÈë¸±±¾4/¸±±¾5
+	Tap 742,503 //é€²å…¥å‰¯æœ¬4/å‰¯æœ¬5
 	Delay 2000
-	Tap	742,503//üc“ô
+	Tap	742,503//é»æ“Š
 	Delay 8000
 	Tap 961,514 //auto
 	Delay 2000
-	Tap 539,635 //Ë²ÒÆ
+	Tap 539,635 //ç¬ç§»
 	Delay 1500
-	TracePrint "ßMÈë¸±±¾4or5"
+	TracePrint "é€²å…¥å‰¯æœ¬4or5"
 	tab_auto = Thread.Start(tab_Run)
 	
 	Do
@@ -111,18 +111,18 @@ sub task4_Run(a)// a = ›Q¶¨¸±±¾4 or 5
 		
 		Dim inttaskx,inttasky
 		Dim intX_PS,intY_PS
-		//ÅĞ×Öcomplete
+		//åˆ¤å­—complete
 		FindColor 1096, 196, 1144, 250, "32EAFF-101010|2CDAFC-101010|26C5E3-101010|189DC8-101010", 0, 0.9, inttaskx, inttasky
-		//ÅĞ×ÖÆæÑÒ
+		//åˆ¤å­—å¥‡å²©
 		FindMultiColor 1143,289,1215,308,"7A848A-101010","9|1|DCF0FB-101010,3|5|C0D1DA-101010,19|1|A3B1B9-101010,37|-6|BACBD4-101010,20|-1|697378-101010,9|5|DCF0FB-101010",0,0.90,intX_PS,intY_PS
 	
-		If inttaskx > -1 And inttasky > -1 or intX_PS > -1 Then //ÅĞ”àÍê³ÉÈÎ„Õ 
+		If inttaskx > -1 And inttasky > -1 or intX_PS > -1 Then //åˆ¤æ–·å®Œæˆä»»å‹™ 
 		
 			Delay 500
-			Thread.Stop(tab_auto) // ½YÊø×Ô„Ótab
+			Thread.Stop(tab_auto) // çµæŸè‡ªå‹•tab
 			Delay 3000
 			Tap 879, 628
-			TracePrint "½YÊø¸±±¾"
+			TracePrint "çµæŸå‰¯æœ¬"
 			
 			Exit Sub 
 		Else 
@@ -137,9 +137,9 @@ sub task4_Run(a)// a = ›Q¶¨¸±±¾4 or 5
 					If intX2 > -1 And intY2 > -1 Then 		
 					Else 
 						TracePrint "Detected the kill disappear 2"
-						TracePrint "Ÿo¹ÖË²ÒÆ"
+						TracePrint "ç„¡æ€ªç¬ç§»"
 						Tap 539,635
-						ShowMessage "Ÿo¹ÖË²ÒÆ", 2000, 578
+						ShowMessage "ç„¡æ€ªç¬ç§»", 2000, 578
 					End If
 			End If
 		End If	
@@ -155,24 +155,24 @@ End Sub
 
 Dim mission_auto,mission_UI,task3_UI,task4_UI,task5_UI
 
-mission_UI = ReadUIConfig("¶àÑ¡-×Ô„Ó½â¸±±¾")
-task3_UI = ReadUIConfig("¶àÑ¡-¸±±¾3")
-task4_UI = ReadUIConfig("¶àÑ¡-¸±±¾4")
-task5_UI = ReadUIConfig("¶àÑ¡-¸±±¾5")
+mission_UI = ReadUIConfig("å¤šé€‰-è‡ªå‹•è§£å‰¯æœ¬")
+task3_UI = ReadUIConfig("å¤šé€‰-å‰¯æœ¬3")
+task4_UI = ReadUIConfig("å¤šé€‰-å‰¯æœ¬4")
+task5_UI = ReadUIConfig("å¤šé€‰-å‰¯æœ¬5")
 Sub mission_Run()
 
-	TracePrint "ßMÈëmission_run"
+	TracePrint "é€²å…¥mission_run"
 	If task3_UI = true Then 
 		TracePrint"True"
 		//task3_auto = Thread.Start(task3_Run)
 		Call task3_Run()
-		TracePrint "ßx“ñtask3"
+		TracePrint "é¸æ“‡task3"
 	End If
 	TracePrint"1"
 	Delay 1000*10
 
 	If task4_UI = True Then 
-	 	TracePrint "ßx“ñtask4"
+	 	TracePrint "é¸æ“‡task4"
 		call task4_Run(0)
 		
 	End If	
@@ -180,11 +180,11 @@ Sub mission_Run()
 	Delay 1000 * 10
 	
 	If task5_UI = True Then 
-	 	TracePrint "ßx“ñtask5"
+	 	TracePrint "é¸æ“‡task5"
 		call task4_Run(1)
 		
 	End If
-	TracePrint"½YÊømission_run"
+	TracePrint"çµæŸmission_run"
 End Sub
 
 If mission_UI = True Then 
@@ -205,18 +205,18 @@ End If
 
 
 
-/****************************2018/3/6 ¸üĞÂ **************************************/
-Dim  hp_detect //ÑªÁ¿‚ÉœyÖ÷³ÌÊ½
+/****************************2018/3/6 æ›´æ–° **************************************/
+Dim  hp_detect //è¡€é‡åµæ¸¬ä¸»ç¨‹å¼
 Dim hp_auto,R_percent,R_choose
-Sub hp_Run()//ÑªÁ¿‚ÉœyÖ÷³ÌÊ½
+Sub hp_Run()//è¡€é‡åµæ¸¬ä¸»ç¨‹å¼
 
-hp_auto = ReadUIConfig("¶àÑ¡¿ò2")
+hp_auto = ReadUIConfig("å¤šé€‰æ¡†2")
 
 TracePrint "detect hp"
 	If hp_auto = true Then 
 		Do
 			Dim intSafeX,intSafeY	
-			//check°²…^
+			//checkå®‰å€
 			FindColor 1140,311,1214,333,"D27C1B-101010|945713-101010|975913-101010|DD821D-101010|C27219-101010|73430F-101010|F28E1F-101010|7D4A10-101010|C27219-101010",0,0.9,intSafeX,intSafeY
 			If intSafeX > -1 And intSafeY > -1 Then 
 			
@@ -231,8 +231,8 @@ hp_detect = Thread.Start(hp_Run)
 
 Sub hp()
 
-R_percent = ReadUIConfig("ÊäÈë¿ò2")
-R_choose = ReadUIConfig("ÏÂÀ­¿ò1")
+R_percent = ReadUIConfig("è¾“å…¥æ¡†2")
+R_choose = ReadUIConfig("ä¸‹æ‹‰æ¡†1")
 	
 	Delay 1000
 	Dim checkup,hp_X1,hp_Y1
@@ -243,22 +243,23 @@ R_choose = ReadUIConfig("ÏÂÀ­¿ò1")
 	
 	TracePrint "initial"
 	Delay 300
-	//checkÑªîÉ«(º¬ÖĞ¶¾)
-	checkup = CmpColor( ( R_percent * 1.92) + hp_X1, hp_Y1, "0008F9-101010|08540A-101010|115912-101010|0F6613-101010|0F7213-101010", 0.9)
+	//checkè¡€é¡è‰²(å«ä¸­æ¯’)
+	checkup = CmpColor( ( R_percent * 1.92) + hp_X1, hp_Y1, "0008F9-101010|08540A-101010|115912-101010|0F6613-101010|0F7213-101010|070B7A-101010|1117A2-101010|131AD2-101010|0A0FAC-101010|05075F-101010", 0.9)
+	
 	TracePrint "check "
 		
 	If checkup > -1 Then 
  	TracePrint "safe "
 	Else 
 		TracePrint"dangerous"
-		If R_choose = 0 Then //ßxí—0 
+		If R_choose = 0 Then //é¸é …0 
     	Tap 623, 632
-		ShowMessage "›]Ñª»Ø¾í", 2000,578
+		ShowMessage "æ²’è¡€å›å·", 2000,578
 		TracePrint "action: back home"
 		
-		Else //ßxí— 1
+		Else //é¸é … 1
     		Tap 542,633
-			ShowMessage "›]ÑªË²ÒÆ", 2000,578
+			ShowMessage "æ²’è¡€ç¬ç§»", 2000,578
 			TracePrint "action transport "
 			delay 5000
     	End If
@@ -275,12 +276,12 @@ End Sub
 
 
 
-Dim mailbox_auto  //¶à¾Q³ÌÊÕĞÅÖ÷³ÌÊ½
+Dim mailbox_auto  //å¤šç¶«ç¨‹æ”¶ä¿¡ä¸»ç¨‹å¼
 Dim mailbox_ui
 
-Sub mailbox_Run()//¶à¾Q³ÌÊÕĞÅÖ÷³ÌÊ½
+Sub mailbox_Run()//å¤šç¶«ç¨‹æ”¶ä¿¡ä¸»ç¨‹å¼
 
-mailbox_ui = ReadUIConfig("×Ô„ÓÊÕĞÅ")
+mailbox_ui = ReadUIConfig("è‡ªå‹•æ”¶ä¿¡")
 If mailbox_ui = True Then 
 	Do
 		Delay 30*60000
@@ -294,10 +295,10 @@ End Sub
 mailbox_auto = Thread.Start(mailbox_Run)
 
 
-Sub mailbox()//×Ô„ÓÊÕ°lĞÅÏä¸±³ÌÊ½
+Sub mailbox()//è‡ªå‹•æ”¶ç™¼ä¿¡ç®±å‰¯ç¨‹å¼
 
 	Dim intxx,intyy
-	ShowMessage "×Ô„ÓÊÕĞÅ" ,3000,578
+	ShowMessage "è‡ªå‹•æ”¶ä¿¡" ,3000,578
 	TracePrint intxx
 	
 	Tap 1230, 42
@@ -318,13 +319,13 @@ End Sub
 
 
 
-Dim Kill_auto  //Ÿo¹ÖË²ÒÆÖ÷³ÌÊ½
+Dim Kill_auto  //ç„¡æ€ªç¬ç§»ä¸»ç¨‹å¼
 
-Sub kill_Run()//Ÿo¹ÖË²ÒÆÖ÷³ÌÊ½
+Sub kill_Run()//ç„¡æ€ªç¬ç§»ä¸»ç¨‹å¼
   	Dim intSafeX,intSafeY
 	Do
 		
-		//°²È«…^ÓòˆD
+		//å®‰å…¨å€åŸŸåœ–
 		FindColor 1140,311,1214,333,"D27C1B-101010|945713-101010|975913-101010|DD821D-101010|C27219-101010|73430F-101010|F28E1F-101010|7D4A10-101010|C27219-101010",0,0.9,intSafeX,intSafeY
 		If intSafeX > -1 And intSafeY > -1 Then
 		Else 
@@ -338,11 +339,11 @@ Kill_auto = Thread.Start(kill_Run)
 
 Dim Kill_select
 
-Sub kill() //Ÿo¹ÖË²ÒÆ¡£¸±³ÌÊ½
+Sub kill() //ç„¡æ€ªç¬ç§»ã€‚å‰¯ç¨‹å¼
 		Dim intX2,intY2,intSafeX2,intSafeY2
 		Delay 5000
 		TracePrint "wait 5 seconds to detect the Kill"
-    	Kill_select = ReadUIConfig("¶àÑ¡¿ò1")
+    	Kill_select = ReadUIConfig("å¤šé€‰æ¡†1")
     	TracePrint "detecting selection"
     	If Kill_select = true Then 
     		TracePrint "selected True"
@@ -361,9 +362,9 @@ Sub kill() //Ÿo¹ÖË²ÒÆ¡£¸±³ÌÊ½
 					
 					Else 
 						TracePrint "Detected the kill disappear 2"
-						TracePrint "Ÿo¹ÖË²ÒÆ"
+						TracePrint "ç„¡æ€ªç¬ç§»"
 						Tap 537, 640
-						ShowMessage "Ÿo¹ÖË²ÒÆ", 2000, 578
+						ShowMessage "ç„¡æ€ªç¬ç§»", 2000, 578
 					End If
 				End If
 			End If
@@ -372,27 +373,27 @@ Sub kill() //Ÿo¹ÖË²ÒÆ¡£¸±³ÌÊ½
 End Sub
 
 
-Dim atk_ui //±»´òË²ÒÆÖ÷³ÌÊ½
-atk_ui = ReadUIConfig("±»´òË²ÒÆ")
+Dim atk_ui //è¢«æ‰“ç¬ç§»ä¸»ç¨‹å¼
+atk_ui = ReadUIConfig("è¢«æ‰“ç¬ç§»")
 If atk_ui = True Then 
 
-	Do	//±»´òË²ÒÆÖ÷³ÌÊ½
+	Do	//è¢«æ‰“ç¬ç§»ä¸»ç¨‹å¼
 		Dim intW,intZ,intX,intY
 		
-		FindColor 281, 9, 293, 36, "07086E|080B6F", 0, 0.95, intX, intY //‚Éœy÷¼ót
+		FindColor 281, 9, 293, 36, "07086E|080B6F", 0, 0.95, intX, intY //åµæ¸¬éª·é«
 		FindColor 1193,542,1207,553,"94A4FF|94A4FF",0,0.95,intW,intZ
 			
 			TracePrint "test skeleton"
 		
-		If intW > -1 And intZ > -1 And intW > -1 And intZ > -1  Then //±»´òË²ÒÆ
+		If intW > -1 And intZ > -1 And intW > -1 And intZ > -1  Then //è¢«æ‰“ç¬ç§»
 			Tap 537, 640
-			ShowMessage "±»´òË²ÒÆ" ,2000,578
+			ShowMessage "è¢«æ‰“ç¬ç§»" ,2000,578
 			Delay 2800
 		End If
 		
 		Delay 1000
 	Loop
 
-End If//±»´òË²ÒÆÖ÷³ÌÊ½
+End If//è¢«æ‰“ç¬ç§»ä¸»ç¨‹å¼
 
 
